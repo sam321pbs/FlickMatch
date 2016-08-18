@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+
+    <!--ratings-->
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Ratings"
+              android:textColor="@color/textColorBlack"
+              android:gravity="center_horizontal"/>
+
+    <TableRow android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+        <TextView style="@style/table_row_text_style_basic"
+                  android:text="Tomatometer"/>
+
+        <TextView style="@style/table_row_text_style_basic"
+                  android:text="Audiance"/>
+
+    </TableRow>
+
+    <TableRow android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+        <LinearLayout style="@style/table_row_text_style_basic"
+                      android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textColor="@color/textColorBlack"
+                      android:layout_marginEnd="5dp"
+                      android:text="74%"/>
+
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:src="@mipmap/rotten_tomatoe_certified_fresh"/>
+
+        </LinearLayout>
+
+
+        <TextView style="@style/table_row_text_style_basic"
+                  android:text="66%"/>
+
+    </TableRow>
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textColor="@color/textColorBlack"
+              android:text="Relavent Info"
+              android:gravity="center_horizontal"/>
+
+    <TableRow android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+        <TextView style="@style/table_row_text_style_basic"
+                  android:text="Release Year"/>
+
+        <TextView style="@style/table_row_text_style_basic"
+                  android:text="Flix Rating"/>
+
+    </TableRow>
+
+    <TableRow android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+        <TextView style="@style/table_row_text_style_basic"
+                  android:text="2016"/>
+
+        <TextView style="@style/table_row_text_style_basic"
+                  android:text="PG"/>
+
+    </TableRow>
+
+</TableLayout>
