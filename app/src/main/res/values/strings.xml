@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Flick Match</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+
+    <string-array name="planets_array">
+        <item>Planet Sam</item>
+        <item>Planet Mars</item>
+        <item>Planet Sam 2</item>
+    </string-array>
 </resources>

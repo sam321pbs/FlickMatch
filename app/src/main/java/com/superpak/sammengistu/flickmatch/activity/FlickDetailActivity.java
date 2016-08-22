@@ -12,4 +12,5 @@ public class FlickDetailActivity extends SingleFragmentActivity {
     public Fragment createFragment() {
         return new FlickDetailFragment();
     }
+
 }
