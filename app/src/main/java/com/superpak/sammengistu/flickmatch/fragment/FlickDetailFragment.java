@@ -21,6 +21,7 @@ public class FlickDetailFragment extends Fragment {
                              Bundle savedInstanceState){
         View flikDetailView = inflater.inflate(R.layout.fragment_detail_flick, container, false);
 
+
         return flikDetailView;
     }
 }

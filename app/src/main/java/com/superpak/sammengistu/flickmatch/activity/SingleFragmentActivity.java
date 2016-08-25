@@ -1,4 +1,8 @@
-package com.superpak.sammengistu.flickmatch;
+package com.superpak.sammengistu.flickmatch.activity;
+
+import com.superpak.sammengistu.flickmatch.R;
+import com.superpak.sammengistu.flickmatch.fragment.ExploreFlicksFragment;
+import com.superpak.sammengistu.flickmatch.fragment.FlickDetailFragment;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -14,11 +18,12 @@ import android.view.MenuItem;
 
 
 public abstract class SingleFragmentActivity extends AppCompatActivity
-    implements NavigationView.OnNavigationItemSelectedListener{
+    implements NavigationView.OnNavigationItemSelectedListener {
 
     public abstract Fragment createFragment();
 
     private Fragment mFragment;
+    private FragmentManager mFragmentManager;
 
     //By default call this but gets override to use the appropriate view
     protected int getLayoutResId() {
@@ -30,14 +35,14 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
 
-        mFragment = fragmentManager.findFragmentById(R.id.fragment_container);
+        mFragment = mFragmentManager.findFragmentById(R.id.fragment_container);
 
         mFragment = createFragment();
 
-        fragmentManager.beginTransaction()
-            .add(R.id.fragment_container, mFragment )
+        mFragmentManager.beginTransaction()
+            .add(R.id.fragment_container, mFragment)
             .commit();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -91,9 +96,27 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        mFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        mFragmentManager.beginTransaction()
+            .remove(mFragment)
+            .commit();
+
         if (id == R.id.nav_camera) {
             // Handle the camera action
+
+            mFragment = new FlickDetailFragment();
+
+            mFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, mFragment)
+                .commit();
+
         } else if (id == R.id.nav_gallery) {
+
+            mFragment = new ExploreFlicksFragment();
+
+            mFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, mFragment)
+                .commit();
 
         } else if (id == R.id.nav_slideshow) {
 
