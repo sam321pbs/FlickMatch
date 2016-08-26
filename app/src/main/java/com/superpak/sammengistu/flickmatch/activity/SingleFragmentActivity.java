@@ -97,26 +97,16 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
         int id = item.getItemId();
 
         mFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        mFragmentManager.beginTransaction()
-            .remove(mFragment)
-            .commit();
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
 
             mFragment = new FlickDetailFragment();
 
-            mFragmentManager.beginTransaction()
-                .add(R.id.fragment_container, mFragment)
-                .commit();
 
         } else if (id == R.id.nav_gallery) {
 
             mFragment = new ExploreFlicksFragment();
-
-            mFragmentManager.beginTransaction()
-                .add(R.id.fragment_container, mFragment)
-                .commit();
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -128,8 +118,24 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
 
         }
 
+        switchContent(mFragment);
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
+    }
+
+
+    public void switchContent(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().
+            remove(mFragment).commit();
+
+        mFragment = fragment;
+        getSupportFragmentManager()
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit();
+
     }
 }
