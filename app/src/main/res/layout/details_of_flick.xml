@@ -6,8 +6,9 @@
               android:layout_marginStart="@dimen/detail_margins"
               android:layout_marginEnd="@dimen/detail_margins">
 
-    <ImageView android:layout_width="100dp"
-               android:layout_height="125dp"
+    <ImageView android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/detail_movie_poster"
                android:layout_gravity="center_horizontal"
                android:layout_marginTop="100dp"
                android:textColor="@color/textColorBlack"
@@ -15,36 +16,36 @@
 
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="The Secret Life Of Pets The Secret Life Of Pets"
-              android:layout_marginTop="15dp"
-              android:layout_marginStart="30dp"
-              android:layout_marginEnd="30dp"
+              android:id="@+id/detail_title_of_flick"
+              android:text="The Secret Life Of Pets "
+              android:layout_marginTop="@dimen/margin_from_title"
+              android:layout_marginStart="@dimen/title_side_margin"
+              android:layout_marginEnd="@dimen/title_side_margin"
+              android:textAlignment="center"
               android:textColor="@color/textColorBlack"
               android:layout_gravity="center_horizontal"
-              android:textSize="20sp"/>
+              android:textSize="@dimen/title_text_siz"/>
 
     <include layout="@layout/movie_information"/>
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="Synopsis"
-              android:textColor="@color/textColorBlack"
-              android:gravity="center_horizontal"/>
+    <TextView
+            style="@style/label_style"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:id="@+id/detail_movie_synopsis"
+              android:layout_marginTop="@dimen/margin_from_title"
               android:textColor="@color/textColorBlack"
               android:text="Pixar returns to their first success with Toy Story 3. The movie begins with Andy leaving for college and donating his beloved toys -- including Woody (Tom Hanks) and Buzz (Tim Allen) -- to a daycare. While the crew meets new friends, including Ken (Michael Keaton), they soon grow to hate their new surroundings and plan an escape. The film was directed by Lee Unkrich from a script co-authored by Little Miss Sunshine scribe Michael Arndt. ~ Perry Seibert, Rovi"/>
 
-    <include layout="@layout/cast_info"/>
+    <include layout="@layout/cast_info"
+             android:id="@+id/cast_info_table_layout"/>
 
-    <include layout="@layout/directors_info"/>
+    <include layout="@layout/cast_info"
+             android:id="@+id/director_info_table_layout"/>
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:gravity="center_horizontal"
-              android:text="Studio"
-              android:textColor="@color/textColorBlack"/>
+    <TextView style="@style/label_style"
+    android:text="Studio"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"

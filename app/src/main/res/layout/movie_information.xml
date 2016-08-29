@@ -6,20 +6,24 @@
 
     <!--ratings-->
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="Ratings"
-              android:textColor="@color/textColorBlack"
-              android:gravity="center_horizontal"/>
+    <TextView style="@style/label_style"
+              android:text="@string/ratings"/>
 
     <TableRow android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/margin_from_title">
 
         <TextView style="@style/table_row_text_style_basic"
-                  android:text="Tomatometer"/>
+                  android:text="@string/tomatometer"
+        android:layout_weight="33"/>
 
         <TextView style="@style/table_row_text_style_basic"
-                  android:text="Audiance"/>
+                  android:text="@string/imdb"
+                  android:layout_weight="33"/>
+
+        <TextView style="@style/table_row_text_style_basic"
+                  android:text="@string/metascore"
+                  android:layout_weight="33"/>
 
     </TableRow>
 
@@ -29,9 +33,8 @@
         <LinearLayout style="@style/table_row_text_style_basic"
                       android:orientation="horizontal">
 
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textColor="@color/textColorBlack"
+            <TextView style="@style/info_detail_style"
+                      android:id="@+id/detail_rotten_tomatoe_score"
                       android:layout_marginEnd="5dp"
                       android:text="74%"/>
 
@@ -41,20 +44,22 @@
 
         </LinearLayout>
 
+        <TextView style="@style/table_row_text_style_basic"
+                  android:id="@+id/detail_imdb_score"
+                  android:text="9/10"/>
 
         <TextView style="@style/table_row_text_style_basic"
+                  android:id="@+id/detail_metascore"
                   android:text="66%"/>
 
     </TableRow>
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:textColor="@color/textColorBlack"
-              android:text="Relavent Info"
-              android:gravity="center_horizontal"/>
+    <TextView style="@style/label_style"
+            android:text="@string/relevant_info"/>
 
     <TableRow android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/margin_from_title">
 
         <TextView style="@style/table_row_text_style_basic"
                   android:text="Release Year"/>
@@ -68,9 +73,11 @@
               android:layout_height="wrap_content">
 
         <TextView style="@style/table_row_text_style_basic"
+                  android:id="@+id/detail_release_year"
                   android:text="2016"/>
 
         <TextView style="@style/table_row_text_style_basic"
+                  android:id="@+id/detail_movie_rating"
                   android:text="PG"/>
 
     </TableRow>

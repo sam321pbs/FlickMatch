@@ -27,4 +27,24 @@
 
     </style>
 
+    <style name="label_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:text">Synopsis</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_marginTop">@dimen/margin_from_title</item>
+        <item name="android:textColor">@color/textColorBlack</item>
+        <item name="android:gravity">center_horizontal</item>
+
+    </style>
+
+    <style name="info_detail_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textColorBlack</item>
+        <item name="android:text">Tom Hanks</item>
+        <item name="android:gravity">center_horizontal</item>
+
+    </style>
+
 </resources>

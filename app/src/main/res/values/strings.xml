@@ -4,6 +4,13 @@
     <string name="drawer_close">Close</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="cast">Cast</string>
+    <string name="ratings">Ratings</string>
+    <string name="relevant_info">Relevant Info</string>
+    <string name="metascore">Metascore</string>
+    <string name="imdb">IMDb</string>
+    <string name="tomatometer">Tomatometer</string>
 
     <string-array name="planets_array">
         <item>Planet Sam</item>
