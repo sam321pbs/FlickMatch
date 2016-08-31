@@ -1,7 +1,8 @@
 package com.superpak.sammengistu.flickmatch.fragment;
 
-import com.superpak.sammengistu.flickmatch.MoviePoseterAdapter;
+import com.superpak.sammengistu.flickmatch.FlickConstants;
 import com.superpak.sammengistu.flickmatch.R;
+import com.superpak.sammengistu.flickmatch.async.RetrieveFlickPosterAsync;
 import com.superpak.sammengistu.flickmatch.adapters.ExploreFlickSectionAdapter;
 
 import android.os.Bundle;
@@ -18,7 +19,6 @@ import android.widget.GridView;
 public class ExploreFlicksFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
-    private View mParentView;
     private GridView mMoviePosterGridView;
 
     @Override
@@ -26,21 +26,21 @@ public class ExploreFlicksFragment extends Fragment {
                              Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_explore_flicks, container, false);
 
-        mParentView = getActivity().findViewById(R.id.app_bar_main);
-
         mRecyclerView = (RecyclerView) view
             .findViewById(R.id.explorer_movie_section_titles_recycler_view);
 
         mMoviePosterGridView = (GridView) view.findViewById(R.id.movie_grid_view);
 
-        mMoviePosterGridView.setAdapter(new MoviePoseterAdapter(getActivity()));
+
+      new RetrieveFlickPosterAsync(mMoviePosterGridView,
+          getActivity(), false).execute(FlickConstants.POPULAR_MOVIES_URL);
 
         LinearLayoutManager layoutManager
             = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
         ExploreFlickSectionAdapter exploreFlickSectionAdapter =
             new ExploreFlickSectionAdapter(getActivity(),
-                (CoordinatorLayout) view);
+                (CoordinatorLayout) view, mMoviePosterGridView);
 
 
         mRecyclerView.setLayoutManager(layoutManager);
@@ -49,5 +49,4 @@ public class ExploreFlicksFragment extends Fragment {
 
         return view;
     }
-
 }

@@ -2,14 +2,18 @@ package com.superpak.sammengistu.flickmatch.adapters;
 
 import com.superpak.sammengistu.flickmatch.MovieSections;
 import com.superpak.sammengistu.flickmatch.R;
+import com.superpak.sammengistu.flickmatch.async.RetrieveFlickPosterAsync;
+import com.superpak.sammengistu.flickmatch.activity.SingleFragmentActivity;
 
 import android.app.Activity;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.TextView;
 
 
@@ -19,10 +23,13 @@ public class ExploreFlickSectionAdapter extends RecyclerView.Adapter<ExploreFlic
     private Activity mActivity;
     private FlickPosterAdapterViewHolder mCurrentSection;
     private CoordinatorLayout mCoordinatorLayout;
+    private GridView mGridViewPosters;
 
-    public ExploreFlickSectionAdapter(Activity activity, CoordinatorLayout coordinatorLayout) {
+    public ExploreFlickSectionAdapter(Activity activity, CoordinatorLayout coordinatorLayout,
+                                      GridView gridViewPosters) {
         mActivity = activity;
         mCoordinatorLayout = coordinatorLayout;
+        mGridViewPosters = gridViewPosters;
     }
 
     @Override
@@ -37,7 +44,7 @@ public class ExploreFlickSectionAdapter extends RecyclerView.Adapter<ExploreFlic
 
     @Override
     public int getItemCount() {
-        return 7;
+        return MovieSections.values().length;
     }
 
 
@@ -67,33 +74,9 @@ public class ExploreFlickSectionAdapter extends RecyclerView.Adapter<ExploreFlic
                 break;
             case 6:
                 setTitleAndOnCLick(MovieSections.AIRING_TODAY_TV_SHOWS);
-
+            case 7:
+                setTitleAndOnCLick(MovieSections.TOP_RATED_TV_SHOWS);
         }
-
-//        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-//            LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//
-////        Scroll item 2 to 20 pixels from the top
-////        linearLayoutManager.scrollToPositionWithOffset(2, 20);
-//
-//        if (position == 0) {
-//
-//            layoutParams.setMarginStart(0);
-//            layoutParams.setMarginEnd(25);
-//        } else if (position == getItemCount() - 1) {
-//
-//            layoutParams.setMarginStart(25);
-//            layoutParams.setMarginEnd(0);
-//
-//        } else {
-//            layoutParams.setMarginStart(25);
-//            layoutParams.setMarginEnd(25);
-//
-//        }
-//        holder.mFlickMoviewPosterLinearLayout.setLayoutParams(layoutParams);
-
-
-
     }
 
     private void setTitleAndOnCLick(final MovieSections movieSections){
@@ -102,12 +85,20 @@ public class ExploreFlickSectionAdapter extends RecyclerView.Adapter<ExploreFlic
         mCurrentSection.mTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(mCoordinatorLayout, movieSections.getTitleName(), Snackbar.LENGTH_SHORT).show();
+                Log.i("SECTIONADAPTER" , movieSections.getURLPoster());
+                Snackbar.make(mCoordinatorLayout, movieSections.getTitleName(),
+                    Snackbar.LENGTH_SHORT).show();
+                SingleFragmentActivity.sToolbar.setTitle(movieSections.getTitleName());
 
+                if (movieSections.toString().contains("TV")){
+                    new RetrieveFlickPosterAsync(mGridViewPosters,
+                        mActivity, true).execute(movieSections.getURLPoster());
+                } else {
+                    new RetrieveFlickPosterAsync(mGridViewPosters,
+                        mActivity,false).execute(movieSections.getURLPoster());
+                }
             }
         });
-
-
 
     }
 

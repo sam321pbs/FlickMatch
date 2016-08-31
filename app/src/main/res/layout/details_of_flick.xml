@@ -28,6 +28,15 @@
 
     <include layout="@layout/movie_information"/>
 
+    <TextView style="@style/label_style"
+              android:text="Genre"/>
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/detail_genre"
+              android:textAlignment="center"
+              android:gravity="center_horizontal"/>
+
     <TextView
             style="@style/label_style"/>
 
@@ -45,7 +54,7 @@
              android:id="@+id/director_info_table_layout"/>
 
     <TextView style="@style/label_style"
-    android:text="Studio"/>
+              android:text="Studio"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"

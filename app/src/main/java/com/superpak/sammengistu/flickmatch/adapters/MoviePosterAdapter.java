@@ -1,7 +1,10 @@
-package com.superpak.sammengistu.flickmatch;
+package com.superpak.sammengistu.flickmatch.adapters;
+
+import com.squareup.picasso.Picasso;
+import com.superpak.sammengistu.flickmatch.model.FlickPoster;
+import com.superpak.sammengistu.flickmatch.R;
 
 import android.app.Activity;
-import android.graphics.Movie;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,29 +14,27 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-/**
- * Created by SamMengistu on 8/26/16.
- */
-public class MoviePoseterAdapter extends BaseAdapter {
 
-    private List<String> mMoviesPosterList;
+public class MoviePosterAdapter extends BaseAdapter {
+
     private Activity mActivity;
-    private String mMovieTypes;
-    private List<Movie> mMovieList;
+    private List<FlickPoster> mMovieList;
     private GridView mGridView;
 
-    public MoviePoseterAdapter(Activity activity) {
+    public MoviePosterAdapter(Activity activity, List<FlickPoster> movies, GridView gridView) {
         mActivity = activity;
+        mMovieList = movies;
+        mGridView = gridView;
     }
 
     @Override
     public int getCount() {
-        return 10;
+        return mMovieList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mMoviesPosterList.get(position);
+        return mMovieList.get(position);
     }
 
     @Override
@@ -62,7 +63,14 @@ public class MoviePoseterAdapter extends BaseAdapter {
             moviePosterViewHolder = (MoviePosterViewHolder) convertView.getTag();
         }
 
-        moviePosterViewHolder.mImageView.setImageResource(R.mipmap.secret_life_of_pets_cover);
+        Picasso.with(mActivity)
+            .load(mMovieList.get(position).getPosterURL())
+            .resize(mGridView.getColumnWidth(),
+                mGridView.getHeight() / 2)
+            .centerCrop()
+//            .placeholder(R.drawable.empty_poster)
+//            .error(R.drawable.empty_poster)
+            .into(moviePosterViewHolder.mImageView);
         
         moviePosterViewHolder.position = position;
         return convertView;

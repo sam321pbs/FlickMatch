@@ -24,6 +24,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
 
     private Fragment mFragment;
     private FragmentManager mFragmentManager;
+    public static Toolbar sToolbar;
 
     //By default call this but gets override to use the appropriate view
     protected int getLayoutResId() {
@@ -45,12 +46,13 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
             .add(R.id.fragment_container, mFragment)
             .commit();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        sToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(sToolbar);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            this, drawer, sToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
