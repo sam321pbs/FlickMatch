@@ -74,6 +74,7 @@ public class ExploreFlickSectionAdapter extends RecyclerView.Adapter<ExploreFlic
                 break;
             case 6:
                 setTitleAndOnCLick(MovieSections.AIRING_TODAY_TV_SHOWS);
+                break;
             case 7:
                 setTitleAndOnCLick(MovieSections.TOP_RATED_TV_SHOWS);
         }

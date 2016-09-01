@@ -68,6 +68,7 @@ public class MoviePosterAdapter extends BaseAdapter {
             .resize(mGridView.getColumnWidth(),
                 mGridView.getHeight() / 2)
             .centerCrop()
+            //TODO: add place holder images
 //            .placeholder(R.drawable.empty_poster)
 //            .error(R.drawable.empty_poster)
             .into(moviePosterViewHolder.mImageView);

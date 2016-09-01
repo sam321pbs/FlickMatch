@@ -15,7 +15,7 @@
 
         <TextView style="@style/table_row_text_style_basic"
                   android:text="@string/tomatometer"
-        android:layout_weight="33"/>
+                  android:layout_weight="33"/>
 
         <TextView style="@style/table_row_text_style_basic"
                   android:text="@string/imdb"
@@ -55,7 +55,7 @@
     </TableRow>
 
     <TextView style="@style/label_style"
-            android:text="@string/relevant_info"/>
+              android:text="@string/relevant_info"/>
 
     <TableRow android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -65,7 +65,10 @@
                   android:text="Release Year"/>
 
         <TextView style="@style/table_row_text_style_basic"
-                  android:text="Flix Rating"/>
+                  android:text="Runtime"/>
+
+        <TextView style="@style/table_row_text_style_basic"
+                  android:text="Flicx Rated"/>
 
     </TableRow>
 
@@ -75,6 +78,10 @@
         <TextView style="@style/table_row_text_style_basic"
                   android:id="@+id/detail_release_year"
                   android:text="2016"/>
+
+        <TextView style="@style/table_row_text_style_basic"
+                  android:id="@+id/detail_runtime"
+                  android:text="97min"/>
 
         <TextView style="@style/table_row_text_style_basic"
                   android:id="@+id/detail_movie_rating"

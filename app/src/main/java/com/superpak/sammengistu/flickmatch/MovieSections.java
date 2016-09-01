@@ -1,8 +1,5 @@
 package com.superpak.sammengistu.flickmatch;
 
-/**
- * Created by SamMengistu on 8/26/16.
- */
 public enum MovieSections {
 
     POPULAR_MOVIES("Popular Movies", FlickConstants.THE_MOVIE_DB_BEGINNING_URL +

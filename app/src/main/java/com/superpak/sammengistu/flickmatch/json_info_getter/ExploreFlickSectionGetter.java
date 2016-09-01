@@ -78,24 +78,17 @@ public class ExploreFlickSectionGetter {
      */
     public static List<FlickPoster> setUpFlickPosterObjectsFromTMDB(String url,
                                                                     boolean isTvRequest) {
-
         List<FlickPoster> flickPosters = new ArrayList<>();
 
         try {
-
             //Convert Json String to Json Object
             JSONObject moviesJsonObject = new JSONObject(getJsonFromURL(url));
 
             //Get the Json Array
             JSONArray moviesJsonArray = moviesJsonObject.getJSONArray(RESULT);
 
-            Log.i(TAG, "Json Array size = " + moviesJsonArray.length());
-
             for (int i = 0; i < moviesJsonArray.length(); i++) {
                 JSONObject jsonObject = moviesJsonArray.getJSONObject(i);
-
-                Log.i(TAG, "Single movie item = \n" + jsonObject.toString());
-                Log.i(TAG, "Poster path  \n"+ i + ") " + jsonObject.getString(POSTER_PATH));
 
                 FlickPoster newFlick;
                 if (isTvRequest){
@@ -108,20 +101,14 @@ public class ExploreFlickSectionGetter {
                         jsonObject.getString(MOVIE_TITLE));
                 }
 
-
                 flickPosters.add(newFlick);
-                Log.i(TAG, "Flick poster size = " + flickPosters.size());
 
             }
 
             return flickPosters;
-
-
         } catch (JSONException e) {
             Log.i(TAG, "Exception = " + e.getMessage());
         }
-
-        Log.i(TAG, "Poster movies size = " + flickPosters.size());
 
         return flickPosters;
     }

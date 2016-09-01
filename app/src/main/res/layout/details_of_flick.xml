@@ -34,6 +34,7 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:id="@+id/detail_genre"
+              android:text="children, comedy, family"
               android:textAlignment="center"
               android:gravity="center_horizontal"/>
 
@@ -59,6 +60,19 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:gravity="center_horizontal"
+              android:id="@+id/detail_studio"
               android:text="Walt Disney Studio"
               android:textColor="@color/textColorBlack"/>
+
+    <TextView style="@style/label_style"
+              android:text="Awards"/>
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:id="@+id/detail_awards"
+              android:text="Emmey"
+              android:textColor="@color/textColorBlack"/>
+
+
 </LinearLayout>
