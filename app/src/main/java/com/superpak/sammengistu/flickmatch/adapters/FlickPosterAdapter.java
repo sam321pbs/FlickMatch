@@ -1,10 +1,12 @@
 package com.superpak.sammengistu.flickmatch.adapters;
 
 import com.squareup.picasso.Picasso;
+import com.superpak.sammengistu.flickmatch.activity.FlickDetailActivity;
 import com.superpak.sammengistu.flickmatch.model.FlickPoster;
 import com.superpak.sammengistu.flickmatch.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +17,13 @@ import android.widget.ImageView;
 import java.util.List;
 
 
-public class MoviePosterAdapter extends BaseAdapter {
+public class FlickPosterAdapter extends BaseAdapter {
 
     private Activity mActivity;
     private List<FlickPoster> mMovieList;
     private GridView mGridView;
 
-    public MoviePosterAdapter(Activity activity, List<FlickPoster> movies, GridView gridView) {
+    public FlickPosterAdapter(Activity activity, List<FlickPoster> movies, GridView gridView) {
         mActivity = activity;
         mMovieList = movies;
         mGridView = gridView;
@@ -43,7 +45,7 @@ public class MoviePosterAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         MoviePosterViewHolder moviePosterViewHolder;
 
@@ -62,6 +64,16 @@ public class MoviePosterAdapter extends BaseAdapter {
         } else {
             moviePosterViewHolder = (MoviePosterViewHolder) convertView.getTag();
         }
+
+        moviePosterViewHolder.mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mActivity, FlickDetailActivity.class);
+                intent.putExtra("Movie Title", mMovieList.get(position).getFlickTitle());
+
+                mActivity.startActivity(intent);
+            }
+        });
 
         Picasso.with(mActivity)
             .load(mMovieList.get(position).getPosterURL())
