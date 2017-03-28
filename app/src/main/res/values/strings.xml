@@ -11,6 +11,8 @@
     <string name="metascore">Metascore</string>
     <string name="imdb">IMDb</string>
     <string name="tomatometer">Tomatometer</string>
+    <string name="search_title">Search</string>
+    <string name="search_hint">Type flick name</string>
 
     <string-array name="planets_array">
         <item>Planet Sam</item>

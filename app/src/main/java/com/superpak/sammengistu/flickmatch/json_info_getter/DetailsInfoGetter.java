@@ -45,7 +45,6 @@ public class DetailsInfoGetter {
      */
     public static Flick setUpFlickPosterObjectsFromTMDB(String title) {
 
-        turnTitleInToURLFormat(title);
         Log.i(TAG, "called");
         Flick flick = new Flick();
         try {

@@ -2,7 +2,7 @@ package com.superpak.sammengistu.flickmatch.async;
 
 import com.superpak.sammengistu.flickmatch.json_info_getter.ExploreFlickSectionGetter;
 import com.superpak.sammengistu.flickmatch.model.FlickPoster;
-import com.superpak.sammengistu.flickmatch.adapters.MoviePosterAdapter;
+import com.superpak.sammengistu.flickmatch.adapters.FlickPosterAdapter;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -35,7 +35,7 @@ public class RetrieveFlickPosterAsync extends AsyncTask<String, Void, List<Flick
     protected void onPostExecute(List<FlickPoster> flickPosters) {
 
         mMoviePosterGridView.setAdapter(
-            new MoviePosterAdapter(mActivity, flickPosters, mMoviePosterGridView));
+            new FlickPosterAdapter(mActivity, flickPosters, mMoviePosterGridView));
 
     }
 }

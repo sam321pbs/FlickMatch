@@ -5,6 +5,7 @@ import com.superpak.sammengistu.flickmatch.R;
 import com.superpak.sammengistu.flickmatch.json_info_getter.DetailsInfoGetter;
 import com.superpak.sammengistu.flickmatch.model.Flick;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -49,6 +50,24 @@ public class FlickDetailFragment extends Fragment {
 
     private Flick mCurrentFlick;
 
+    GetFlickDetailListener mCallBack;
+
+    // Container Activity must implement this interface
+    public interface GetFlickDetailListener {
+        void onFlickSelected(String title);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            mCallBack = (GetFlickDetailListener) context;
+        } catch (ClassCastException e) {
+
+        }
+    }
+
     @Override
     public void onCreate(Bundle onSavedInstanceState) {
         super.onCreate(onSavedInstanceState);
@@ -76,6 +95,9 @@ public class FlickDetailFragment extends Fragment {
         View flickDetailView = inflater.inflate(R.layout.fragment_detail_flick, container, false);
         ButterKnife.bind(FlickDetailFragment.this, flickDetailView);
 
+        Log.i(TAG, "Got Movie name = " + getArguments().getString("Movie Title", "N/A"));
+
+        //Todo:MAke its own class
         new AsyncTask<Void, Void,Flick>(){
 
             @Override
@@ -83,13 +105,13 @@ public class FlickDetailFragment extends Fragment {
 //                Log.i("FLICK DETAIL", "" + DetailsInfoGetter.setUpFlickPosterObjectsFromTMDB(
 //                    "http://www.omdbapi.com/?t=The+Avengers&y=&plot=short&r=json&tomatoes=true").getTitle());
                 return DetailsInfoGetter.setUpFlickPosterObjectsFromTMDB(
-                    "The Avengers");
+                    getArguments().getString("Movie Title", "N/A"));
             }
 
             @Override
             protected void onPostExecute(Flick flick) {
                 Log.i(TAG, "Poster URL = " + flick.getIMDBId());
-                Log.i("Flick55" , flick.getTitle());
+                Log.i(TAG , flick.getTitle());
                 Picasso.with(getActivity())
                     .load(flick.getIMDBId())
                     .resize(250,
@@ -105,5 +127,15 @@ public class FlickDetailFragment extends Fragment {
         }.execute();
 
         return flickDetailView;
+    }
+
+    public static FlickDetailFragment newInstance(String title){
+        Bundle args = new Bundle();
+        args.putString("Movie Title", title);
+
+        FlickDetailFragment flickDetailFragment = new FlickDetailFragment();
+        flickDetailFragment.setArguments(args);
+
+        return flickDetailFragment;
     }
 }

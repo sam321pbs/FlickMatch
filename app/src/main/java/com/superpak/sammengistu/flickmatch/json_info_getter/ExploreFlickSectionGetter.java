@@ -1,9 +1,5 @@
 package com.superpak.sammengistu.flickmatch.json_info_getter;
 
-/**
- * Created by SamMengistu on 8/30/16.
- */
-
 import com.superpak.sammengistu.flickmatch.model.FlickPoster;
 
 import org.json.JSONArray;

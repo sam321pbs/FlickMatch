@@ -16,5 +16,6 @@ public class FlickConstants {
     public static final String REVIEWS = "/reviews" + PART_BEFORE_API;
     public static final String YOUTUBE_BASE_URL = "http://www.youtube.com/watch?v=";
 
-
+    //For Search
+    public static final String SEARCH_BEGINNING = "http://www.omdbapi.com/?s=";
 }

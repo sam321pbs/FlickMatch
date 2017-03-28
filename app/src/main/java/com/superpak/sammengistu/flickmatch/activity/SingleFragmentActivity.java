@@ -4,6 +4,8 @@ import com.superpak.sammengistu.flickmatch.R;
 import com.superpak.sammengistu.flickmatch.fragment.ExploreFlicksFragment;
 import com.superpak.sammengistu.flickmatch.fragment.FlickDetailFragment;
 
+import android.app.SearchManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -13,12 +15,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 public abstract class SingleFragmentActivity extends AppCompatActivity
-    implements NavigationView.OnNavigationItemSelectedListener {
+    implements NavigationView.OnNavigationItemSelectedListener,
+   FlickDetailFragment.GetFlickDetailListener {
 
     public abstract Fragment createFragment();
 
@@ -39,7 +43,7 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
         mFragmentManager = getSupportFragmentManager();
 
         mFragment = mFragmentManager.findFragmentById(R.id.fragment_container);
-
+        handleIntent(getIntent());
         mFragment = createFragment();
 
         mFragmentManager.beginTransaction()
@@ -48,7 +52,6 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
 
         sToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(sToolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -139,5 +142,27 @@ public abstract class SingleFragmentActivity extends AppCompatActivity
             .replace(R.id.fragment_container, fragment)
             .commit();
 
+    }
+
+    @Override
+    public void onFlickSelected(String title){
+        mFragment = new FlickDetailFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("Movie Title", title);
+        mFragment.setArguments(bundle);
+
+        switchContent(mFragment);
+    }
+
+    private void handleIntent(Intent intent) {
+
+        Log.i("SingleFragmentAct", "Query = " + "nada");
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            //use the query to search your data somehow
+            Log.i("SingleFragmentAct", "Query = " + query);
+        }
     }
 }

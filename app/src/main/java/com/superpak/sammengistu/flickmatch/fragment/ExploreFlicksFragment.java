@@ -1,9 +1,9 @@
 package com.superpak.sammengistu.flickmatch.fragment;
 
-import com.superpak.sammengistu.flickmatch.FlickConstants;
+import com.superpak.sammengistu.flickmatch.MovieSections;
 import com.superpak.sammengistu.flickmatch.R;
-import com.superpak.sammengistu.flickmatch.async.RetrieveFlickPosterAsync;
 import com.superpak.sammengistu.flickmatch.adapters.ExploreFlickSectionAdapter;
+import com.superpak.sammengistu.flickmatch.async.RetrieveFlickPosterAsync;
 
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -33,7 +33,7 @@ public class ExploreFlicksFragment extends Fragment {
 
 
       new RetrieveFlickPosterAsync(mMoviePosterGridView,
-          getActivity(), false).execute(FlickConstants.POPULAR_MOVIES_URL);
+          getActivity(), false).execute(MovieSections.POPULAR_MOVIES.getURLPoster());
 
         LinearLayoutManager layoutManager
             = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -49,4 +49,5 @@ public class ExploreFlicksFragment extends Fragment {
 
         return view;
     }
+
 }

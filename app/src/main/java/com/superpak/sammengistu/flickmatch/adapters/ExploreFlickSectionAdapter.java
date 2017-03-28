@@ -109,9 +109,7 @@ public class ExploreFlickSectionAdapter extends RecyclerView.Adapter<ExploreFlic
 
         public FlickPosterAdapterViewHolder(View itemView) {
             super(itemView);
-
             mTitle = (TextView) itemView.findViewById(R.id.explore_movie_section_item_title);
-
         }
     }
 }
